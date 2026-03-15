@@ -34,8 +34,8 @@ npm update -g @jackwener/opencli
 
 Browser commands require:
 1. Chrome browser running **(logged into target sites)**
-2. **Chrome 144+** (recommended): Open `chrome://inspect#remote-debugging` → enable remote debugging. opencli auto-discovers via `DevToolsActivePort`
-3. **Fallback**: [Playwright MCP Bridge](https://chromewebstore.google.com/detail/playwright-mcp-bridge/mmlmfjhmonkocbjadbfplnigmagldckm) extension (auto-used when CDP not available)
+2. [Playwright MCP Bridge](https://chromewebstore.google.com/detail/playwright-mcp-bridge/mmlmfjhmonkocbjadbfplnigmagldckm) extension (default connection mode)
+3. **Alternative**: Chrome 144+ CDP auto-discovery — set `OPENCLI_USE_CDP=1` (no extension needed)
 
 > **Note**: You must be logged into the target website in Chrome before running commands. Tabs opened during command execution are auto-closed afterwards.
 
@@ -333,6 +333,7 @@ ${{ index + 1 }}
 | `OPENCLI_BROWSER_EXPLORE_TIMEOUT` | 120 | Explore timeout (sec) |
 | `OPENCLI_EXTENSION_LOCK_TIMEOUT` | 120 | Extension lock timeout (sec) |
 | `OPENCLI_CDP_ENDPOINT` | — | Manual CDP WebSocket endpoint (overrides auto-discovery) |
+| `OPENCLI_USE_CDP` | — | Set to `1` to use Chrome 144+ CDP auto-discovery instead of extension |
 | `OPENCLI_FORCE_EXTENSION` | — | Set to `1` to skip CDP and force extension mode |
 | `PLAYWRIGHT_MCP_EXTENSION_TOKEN` | — | Auto-approve extension connection |
 

@@ -310,11 +310,20 @@ export class PlaywrightMCP {
     const mcpPath = findMcpServerPath();
     if (!mcpPath) throw new Error('Playwright MCP server not found. Install: npm install -D @playwright/mcp');
 
-    // Chrome 144+ auto-discovery via DevToolsActivePort file.
-    // Falls back to --extension mode if no running Chrome is detected.
+    // Connection priority:
+    // 1. OPENCLI_CDP_ENDPOINT env var → explicit CDP endpoint
+    // 2. OPENCLI_USE_CDP=1 → auto-discover via DevToolsActivePort
+    // 3. Default → --extension mode (Playwright MCP Bridge)
     // Some anti-bot sites (e.g. BOSS Zhipin) detect CDP — use forceExtension to bypass.
     const forceExt = opts.forceExtension || process.env.OPENCLI_FORCE_EXTENSION === '1';
-    const cdpEndpoint = forceExt ? null : (process.env.OPENCLI_CDP_ENDPOINT ?? await discoverChromeEndpoint());
+    let cdpEndpoint: string | null = null;
+    if (!forceExt) {
+      if (process.env.OPENCLI_CDP_ENDPOINT) {
+        cdpEndpoint = process.env.OPENCLI_CDP_ENDPOINT;
+      } else if (process.env.OPENCLI_USE_CDP === '1') {
+        cdpEndpoint = await discoverChromeEndpoint();
+      }
+    }
 
     return new Promise<Page>((resolve, reject) => {
       const timer = setTimeout(() => reject(new Error(`Timed out connecting to browser (${timeout}s)`)), timeout * 1000);
