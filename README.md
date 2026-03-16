@@ -136,7 +136,7 @@ npm install -g @jackwener/opencli@latest
 | **zhihu** | `hot` `search` `question` | 🔐 Browser |
 | **xiaohongshu** | `search` `notifications` `feed` `me` `user` | 🔐 Browser |
 | **xueqiu** | `feed` `hot-stock` `hot` `search` `stock` `watchlist` | 🔐 Browser |
-| **twitter** | `trending` `bookmarks` `profile` `search` `timeline` `following` `followers` `notifications` `post` `reply` `delete` `like` | 🔐 Browser |
+| **twitter** | `trending` `bookmarks` `profile` `search` `timeline` `following` `followers` `notifications` `post` `reply` `delete` `like` `article` `follow` `unfollow` `bookmark` `unbookmark` | 🔐 Browser |
 | **reddit** | `hot` `frontpage` `search` `subreddit` | 🔐 Browser |
 | **weibo** | `hot` | 🔐 Browser |
 | **boss** | `search` `detail` | 🔐 Browser |

@@ -86,8 +86,13 @@ opencli github search --keyword "cli"    # 搜索仓库
 opencli twitter trending --limit 10      # 热门话题
 opencli twitter bookmarks --limit 20     # 获取收藏的书签推文
 opencli twitter search --keyword "AI"    # 搜索推文
-opencli twitter profile --username elonmusk  # 用户资料
+opencli twitter profile elonmusk         # 用户资料
 opencli twitter timeline --limit 20      # 时间线
+opencli twitter article 1891511252174299446 # 推文长文内容
+opencli twitter follow elonmusk          # 关注用户
+opencli twitter unfollow elonmusk        # 取消关注
+opencli twitter bookmark https://x.com/... # 收藏推文
+opencli twitter unbookmark https://x.com/... # 取消收藏
 
 # Reddit (browser)
 opencli reddit hot --limit 10            # 热门帖子
